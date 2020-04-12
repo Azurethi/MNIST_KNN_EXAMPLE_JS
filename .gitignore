@@ -1,3 +1,6 @@
+# MNIST data
+modules/pre-form.json
+
 # Logs
 logs
 *.log
