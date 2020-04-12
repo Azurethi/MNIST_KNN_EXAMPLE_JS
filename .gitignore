@@ -1,6 +1,9 @@
 # MNIST data
 modules/pre-form.json
 
+# VS code launch info
+.vscode
+
 # Logs
 logs
 *.log
