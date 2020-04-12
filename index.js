@@ -40,8 +40,31 @@ function opt_test(progresscomment=true){
     
 }
 
+function best_train_test(){
+    console.log("Starting BTT test");
+    var data = require('./modules/formatData').loadPreform();
+
+    var betterTrain = require('./optimisations/best train data/simpleAverage.json');
+
+    console.log("Loaded data");
+
+    var tic = Date.now();
+    var correct= knn_opt(
+        betterTrain,//data.train,
+        data.train,
+        1,
+        true
+    );
+    var toc = Date.now()-tic;
+
+    console.log(`--------------\nFINISHED BTT\n--------------`);
+    console.log(`\tTraining set size: 60000\n\tTest set size: 10000`);
+    console.log(`\tCorrect: ${correct}\n\ttook ${toc}ms\n\tOverall accuracy: ${correct/10000*100}%`)
+}
+
 //basic_test(60000,10,true);
 opt_test(60000,10000,true);
+//best_train_test()
 
 /*Output:
  * --------------

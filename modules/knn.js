@@ -1,4 +1,9 @@
 'use strict';
+
+const helpers = require('./helpers');
+const most_common = helpers.mc;
+const dist=helpers.dist;
+
 function knn(train, testimg, k){
     var distances = [];
     train.img.forEach((img,i)=>{
@@ -15,7 +20,6 @@ function knn(train, testimg, k){
     })
 
     return most_common(nearest_lbl);
-
 }
 
 function knn_opt(train,tests,k,progresscomment){
@@ -66,29 +70,6 @@ function findNKL(dist,lbl,k){
     }
 
     return lbls;
-}
-
-function dist(imgA, imgB){
-    var d=0.0;
-    imgA.forEach((a,i)=>{
-        d+=Math.pow(imgB[i]-a,2)
-    });
-    return Math.sqrt(d);
-}
-
-function most_common(list){
-    var counter=[0,0,0,0,0,0,0,0,0,0];
-    list.forEach(c=>{counter[c]++;})
-
-    var max_v=counter[0];
-    var max_i=0;
-    counter.forEach((v,i)=>{
-        if(v>max_v){
-            max_v=v;
-            max_i=i;
-        }
-    })
-    return max_i;
 }
 
 module.exports.knn=knn
